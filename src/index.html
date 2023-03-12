@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="./style.css">
+   <title>Lesson-10</title>
+</head>
+
+<body class="bg-slate-100">
+
+   <header class="shadow-lg">
+      <nav class="nav container mx-auto h-[75px] bg-white flex items-center px-5">
+         <a href="#" class="nav_logo text-2xl font-bold">Where in the world?</a>
+      </nav>
+   </header>
+
+   <main>
+      <section class="main min-h-screen p-5">
+         <div class="container mx-auto">
+            <div class="flex justify-between ">
+               <input type="text" id="search" class="ring-2 h-[56px] w-[480px] px-4 rounded-md"
+                  placeholder="Enter country name">
+
+               <select id="region" class="ring-2 h-[56px] w-[200px] px-4 rounded-md">
+                  <option disabled selected>Sort by region</option>
+               </select>
+            </div>
+         </div>
+
+         <div class="container wrapper mx-auto pt-8">
+            <div class="card w-[264px] mb-[20px] h-[336px] bg-white shadow-xl m-2 rounded-md"></div>
+         </div>
+      </section>
+   </main>
+
+   <script src="./scripts/utilis.js"></script>
+   <script src="./scripts/app.js"></script>
+</body>
+
+</html>
