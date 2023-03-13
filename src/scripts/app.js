@@ -45,7 +45,7 @@ function renderCountries(data) {
          const card = createElement('div', 'card w-[264px] h-[336px] bg-white mb-[20px] shadow-xl m-2 rounded-md',
 
             `
-            <img src="${item.flag}" alt="UZB" class="w-full rounded-t-md h-[160px]">
+            <img src="${item.flag}" alt="" class="w-full rounded-t-md h-[160px]">
 
             <div class="card-body p-6 pt-3">
             <h3 class="text-xl font-bold">${item.name}</h3>
@@ -77,7 +77,7 @@ function dynamicOption(data) {
    })
 
    sortType.forEach((item) => {
-      let optionSelect = createElement("option", "", `<option value=${item}>${item}</option>`)
+      let optionSelect = createElement("option", "", `<option value="${item}">${item}</option>`)
       regions.append(optionSelect)
    })
 }

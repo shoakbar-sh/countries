@@ -47,3 +47,25 @@
       transform: rotate(360deg)
    }
 }
+
+@media(max-width:730px) {
+   #search {
+      max-width: 400px;
+   }
+}
+
+@media(max-width:560px) {
+   .first {
+      flex-wrap: wrap;
+      margin: 0 auto;
+   }
+
+   #search {
+      width: 260px;
+      margin-bottom: 20px;
+   }
+
+   #region {
+      width: 260px;
+   }
+}
