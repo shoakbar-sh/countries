@@ -19,7 +19,7 @@ async function AllCountries() {
       if (response.status === 200) {
          renderCountries(result)
          sortCountries(result)
-         dynamicOption(result)
+         options(result)
          searchCountries(result)
 
       } else {
@@ -65,20 +65,22 @@ function renderCountries(data) {
    }
 }
 
-// 
-let sortType = []
-function dynamicOption(data) {
+// ============= regions ============
 
-   data.map((item) => {
+function options(data) {
+
+   let sortType = [];
+   data.forEach((item) => {
       if (!sortType.includes(item.region)) {
-         sortType.push(item.region)
+         sortType.push(item.region);
       }
-
    })
 
-   sortType.forEach((item) => {
-      let optionSelect = createElement("option", "", `<option value="${item}">${item}</option>`)
-      regions.append(optionSelect)
+   sortType.sort()
+
+   sortType?.forEach((el) => {
+      const option = createElement("option", "item", el);
+      $("#region").append(option)
    })
 }
 
@@ -91,14 +93,42 @@ function sortCountries(data) {
    })
 }
 
+async function getOption(e) {
+   try {
 
-function searchCountries(data) {
-   search.addEventListener("keyup", (e) => {
-
-      let filterArr = data.filter((item) => {
-         return item.name.toLowerCase().includes(e.target.value.toLowerCase())
-      });
-
-      renderCountries(filterArr)
-   });
+      const response = await fetch(`${base_url}/region/${e.target.value}`)
+      const region = await response.json();
+   } catch (err) {
+      console.log(err);
+   }
 }
+
+$('#region').addEventListener('change', (e) => {
+   getOption(e)
+})
+
+// =========== regions end ===========
+
+// =========== search ===========
+
+async function searchCountries(name) {
+   try {
+      const response = await fetch(`${base_url}/name/${name}`)
+      const result = await response.json();
+
+      if (response.status === 200) {
+         renderCountries(result)
+      } else {
+         wrapper.innerHTML = "<h1 class='text-center text-red-600 text-4xl font-bold '>404 NOT FOUND</h1>"
+         setTimeout(() => {
+            window.location.reload()
+         }, 1000)
+      }
+   } catch (err) {
+      console.log(err);
+   }
+}
+
+$('#search').addEventListener('keyup', (e) => {
+   searchCountries(e.target.value)
+})
